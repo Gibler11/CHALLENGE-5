@@ -1,4 +1,5 @@
 //displays current day
+$(document).ready(function() {
 const date = $("#currentDay")
 date.text(moment().format("dddd, MMMM Do, YYYY"));
 
@@ -24,10 +25,14 @@ var timeArray = [
     fivePm
 ]
 
-let textArea = $(".text-area")
-console.log(textArea.val());
 
-let button = $(".saveBtn")
+
+let button = $(".saveBtn").click(function() {
+   var task = $(this).prev().val()
+   var hour= $ (this). prev().prev().text() 
+   localStorage.setItem(hour,task)
+ });
+
 
 function getFromLocalStorage() {
     textArea.text = localStorage.getItem("")
@@ -49,3 +54,4 @@ for (let i = 0; i < timeArray.length; i++) {
 }
 
 init();
+});
